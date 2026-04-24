@@ -1,8 +1,11 @@
 package strategy;
 
-import model.*;
+import model.Recipe;
+import model.UserPreferences;
 import java.util.List;
 
+// Each implementation decides which recipes to pick and in what order.
+// The Builder uses this list to assemble the actual WeekMenu.
 public interface MealGenerationStrategy {
-    MealPlan generatePlan(List<Recipe> recipes, UserPreferences prefs);
+    List<Recipe> selectRecipes(List<Recipe> available, UserPreferences prefs);
 }

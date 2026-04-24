@@ -1,20 +1,21 @@
 package strategy;
 
-import model.*;
-import java.util.*;
+import model.Recipe;
+import model.UserPreferences;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class BudgetStrategy implements MealGenerationStrategy{
-    public MealPlan generatePlan(List<Recipe> recipes, UserPreferences prefs) {
-        MealPlan plan = new MealPlan();
+public class BudgetStrategy implements MealGenerationStrategy {
 
-        for (Recipe r : recipes) {
-            if (r.matchesPreferences(prefs)) {
-                plan.addMeal(r);
-                if (plan.getMeals().size() == 7) break;
-            }
-        }
+    @Override
+    public List<Recipe> selectRecipes(List<Recipe> available, UserPreferences prefs) {
+        // 14 meals per week: lunch + dinner for 7 days
+        double maxCostPerMeal = prefs.getWeeklyBudget() / 14.0;
 
-        return plan;
+        return available.stream()
+                .filter(r -> r.getCostPerServing() * prefs.getPersonCount() <= maxCostPerMeal)
+                .sorted(Comparator.comparingDouble(Recipe::getCostPerServing))
+                .collect(Collectors.toList());
     }
-
 }
