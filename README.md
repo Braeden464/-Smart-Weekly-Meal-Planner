@@ -153,5 +153,23 @@ test/
 
 ---
 
+## How to Run
+
+**Requirements:** Java 17+
+
+**Run the application:**
+```bash
+./gradlew run
+```
+
+**Run all tests:**
+```bash
+./gradlew test
+```
+
+On Windows use `gradlew.bat` instead of `./gradlew`, or run directly from IntelliJ IDEA (File → Open → select project folder, then load as Gradle project).
+
+---
+
 ## Authors
 Juan Marin & Brady Gaona
