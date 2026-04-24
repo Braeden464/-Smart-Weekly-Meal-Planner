@@ -6,7 +6,11 @@
 
 # Compiled output
 out/
+build/
 *.class
+
+# Gradle cache
+.gradle/
 
 # OS
 .DS_Store
