@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 // Tests for the Builder pattern (renamed from FacadeTest)
-public class FacadeTest {
+public class BuilderTest {
 
     @Test
     public void builder_producesNonEmptyWeekMenu() {
